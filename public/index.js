@@ -2,10 +2,19 @@ function generateBlog() {
     fetch('https://api.are.na/v2/channels/better-objects').then(response => {
         return response.json();
     }).then(res => {
-        for(let c = res.contents.length - 1 ; c >= 0; c--) {
+        let temp = document.querySelector('template');
+        let d = temp.content.querySelector('div');        
+        let a;
 
-            createPost(res.contents[c]);
+        for(let c = res.contents.length - 1; c >= 0; c--) {
+            a = document.importNode(d, true);
+            let h = createHeader(res.contents[c]);
+            let p = createInfo(res.contents[c]);
+            a.appendChild(h);
+            a.appendChild(p);
+            document.querySelector('main').appendChild(a);
         }
+
     });
 }
 
@@ -16,7 +25,8 @@ function createPost(data) {
 
     p.appendChild(h);
     p.appendChild(i);
-    document.querySelector('main').appendChild(p);
+    
+    return p;
 }
 
 function createInfo(data) {
@@ -54,7 +64,7 @@ function renderBlock(data) {
             break;
 
         case "Link":
-            
+
             break;
         default:
             break;

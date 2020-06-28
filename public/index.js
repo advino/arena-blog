@@ -7,26 +7,20 @@ function generateBlog() {
         let a;
 
         for(let c = res.contents.length - 1; c >= 0; c--) {
-            a = document.importNode(d, true);
-            let h = createHeader(res.contents[c]);
-            let p = createInfo(res.contents[c]);
-            a.appendChild(h);
-            a.appendChild(p);
-            document.querySelector('main').appendChild(a);
+            createPost(a, d, res.contents[c]);
         }
 
     });
 }
 
-function createPost(data) {
-    let p = document.createElement('div');
-    let h = createHeader(data);
-    let i = createInfo(data);
+function createPost(template, elt, data) {
 
-    p.appendChild(h);
-    p.appendChild(i);
-    
-    return p;
+    template = document.importNode(elt, true);
+    let h = createHeader(data);
+    let p = createInfo(data);
+    template.appendChild(h);
+    template.appendChild(p);
+    document.querySelector('main').appendChild(template);
 }
 
 function createInfo(data) {

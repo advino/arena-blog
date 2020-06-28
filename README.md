@@ -3,7 +3,6 @@
 arena-blog is a lightweight template kit for quickly building blogs using Are.na as a CMS. 
 
 ## Setup
----
 To set up arena-blog you'll need to first clone the repository. The code-base consists of the following:
 ```
 - index.html
@@ -41,12 +40,10 @@ python3 -m http.server
 You'll need to update your channel name on the index.html file in the `<title>` and `<h2>` tags.
 
 ## Deploying
----
 You can use Github Pages to host your blog once it is deployed to your own repo. 
 
 
 ## Future Plans
----
 
 I made this as a quick exploration for blogging using Are.na. I'm a big fan of their text editor and think there's a lot of opportunity for thinking about how websites can help display that vast amount of information are.na channels contain. Here are some things I'm thinking about adding in.
 

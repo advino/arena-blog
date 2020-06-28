@@ -48,23 +48,34 @@ function renderBlock(data) {
             break;
     
         case "Image":
-            let img = new Image();
-            img.src = data.image.display.url;
-            let link = document.createElement('a');
-            link.appendChild(img);
-            link.href = data.image.display.url;
+            renderImage(data);
+            break;
+
+        case "Media":
+            document.querySelector('main').innerHTML = data.embed.html;
+            break;
+
+        case "Link":    
+            let frame = document.createElement('iframe');
+            frame.src = data.source.url;
             document.querySelector('main').innerHTML = "";
-            document.querySelector('main').appendChild(link);
+            document.querySelector('main').appendChild(frame);
             break;
-
-        case "Link":
-
-            break;
+            
         default:
             break;
     }
    
 }
 
+function renderImage(data) {
+    let img = new Image();
+    img.src = data.image.display.url;
+    let link = document.createElement('a');
+    link.appendChild(img);
+    link.href = data.image.large.url;
+    document.querySelector('main').innerHTML = "";
+    document.querySelector('main').appendChild(link);
+}
 
 generateBlog();

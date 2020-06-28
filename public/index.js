@@ -1,5 +1,5 @@
 function generateBlog() {
-    fetch('https://api.are.na/v2/channels/better-objects').then(response => {
+    fetch('https://api.are.na/v2/channels/arena-blog').then(response => {
         return response.json();
     }).then(res => {
         let temp = document.querySelector('template');
@@ -61,7 +61,7 @@ function renderBlock(data) {
             document.querySelector('main').innerHTML = "";
             document.querySelector('main').appendChild(frame);
             break;
-            
+
         default:
             break;
     }

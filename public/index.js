@@ -58,7 +58,7 @@ function renderBlock(data) {
         case "Link":    
             let a = document.createElement('a');
             a.innerHTML = data.title;
-            frame.href = data.source.url;
+            a.href = data.source.url;
             document.querySelector('main').innerHTML = "";
             document.querySelector('main').appendChild(a);
             break;

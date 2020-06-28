@@ -19,6 +19,7 @@ body {
     height: 100%;
     margin: auto;
     padding: 5px;
+    padding-top: 80px;
 
 }
 
@@ -30,6 +31,15 @@ nav {
 
 main {
     display: block;
+}
+
+main h3 {
+    margin-bottom: -10px;
+}
+
+main h3::after {
+    content: "  →";
+    
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -79,6 +89,10 @@ strong {
     color: #25562f;
 }
 
+mark {
+    background-color: #d8b5d0;
+}
+
 a {
     display: block;
     font-size: 88px;
@@ -102,4 +116,17 @@ hr {
 
 iframe {
     display: block;
+}
+
+pre {
+    display: block;
+    padding: 5px;
+    background-color: #ebf3e9;
+
+}
+
+code {
+    font-size: 14px;
+    font-family: Roboto Mono;
+    color: #1f674f;
 }

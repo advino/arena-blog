@@ -1,0 +1,31 @@
+h1,h2,h3,h4,h5,h6 {
+    display: block;
+}
+
+div {
+    display: block;
+}
+
+p {
+    display: block;
+}
+
+blockquote {
+    display: block;
+}
+
+strong {
+    display: block;
+}
+
+a {
+    display: block;
+}
+
+img {
+    display: block;
+}
+
+hr {
+    display: block;
+}

@@ -9,7 +9,7 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #c8e3ce;
+    background-color: white;
 }
 
 body {
@@ -46,7 +46,7 @@ h1,h2,h3,h4,h5,h6 {
     display: block;
     font-family: Lora;
     font-weight: 500;
-    color: #25562f;
+    color: black;
 }
 
 h3 {
@@ -60,7 +60,7 @@ div {
 p {
     display: block;
     font-family: Roboto;
-    color: #194049;
+    color: grey;
 }
 
 blockquote {
@@ -70,7 +70,7 @@ blockquote {
 }
 
 blockquote p {
-    color: #1f674f;
+    color: lightgrey;
     font-family: Lora;
     font-weight: 300;
     quotes: """ """;
@@ -86,11 +86,11 @@ blockquote p::after {
 
 strong {
     display: block;
-    color: #25562f;
+    color: black;
 }
 
 mark {
-    background-color: #d8b5d0;
+    background-color: lightgrey;
 }
 
 a {
@@ -98,7 +98,7 @@ a {
     font-size: 88px;
     font-family: Lora;
     font-weight: 600;
-    color: #25562f;
+    color: black;
     text-decoration: none;
 }
 
@@ -111,7 +111,7 @@ img {
 hr {
     display: block;
     border:  none;
-    border-bottom: solid #629748 1px;
+    border-bottom: solid lightgrey 1px;
 }
 
 iframe {
@@ -120,13 +120,14 @@ iframe {
 
 pre {
     display: block;
+    white-space: pre;
     padding: 5px;
-    background-color: #ebf3e9;
+    background-color: #e8eaed;
 
 }
 
 code {
     font-size: 14px;
     font-family: Roboto Mono;
-    color: #1f674f;
+    color: black;
 }

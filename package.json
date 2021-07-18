@@ -1,0 +1,29 @@
+{
+  "name": "arena-blog",
+  "version": "1.0.0",
+  "description": "arena-blog is a lightweight template kit for quickly building blogs using Are.na as a CMS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify public/main.js -o public/bundle.js",
+    "serve": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akalakkad/arena-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akalakkad/arena-blog/issues"
+  },
+  "homepage": "https://github.com/akalakkad/arena-blog#readme",
+  "dependencies": {
+    "choo": "^7.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "serve": "^12.0.0"
+  }
+}

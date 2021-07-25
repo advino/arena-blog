@@ -1,14 +1,15 @@
 const choo = require('choo');
 const html = require('choo/html');
 
+let { listItem, imageBlock, channelBlock, textBlock } = require('./components/items.js');
+
 let app = choo({hash: true});
-app.route('/', mainView);
-app.route('#hello', secondView);
-app.route('#hello/:name', secondView);
+app.route('/:slug', mainView);
 
 
 
 app.mount('body');
+ 
 app.use((state, emitter) => {
 
     state.title = null;
@@ -18,11 +19,8 @@ app.use((state, emitter) => {
 
     emitter.on('navigate', () => {
         console.log(`Navigated to state: ${state.route}`);
-    });
 
-    emitter.on('DOMContentLoaded', () => {
-
-        window.fetch('https://api.are.na/v2/channels/abstract-deities')
+        window.fetch(`https://api.are.na/v2/channels/${state.params.slug}`)
         .then(response => {
             return response.json();
         })
@@ -31,36 +29,52 @@ app.use((state, emitter) => {
             state.title = result.title;
             state.owner = result.owner;
             state.contents = result.contents;
-            state.current = result.contents[0].image.square.url;
+            state.current = result.contents[0].id; 
             console.log(state);
-
+    
             emitter.emit('render');
         });
     });
 
-    emitter.on('click', data => {
+    emitter.on('DOMContentLoaded', () => {
 
-        console.log('Item clicked', data);
-        let item = state.contents.find(item => {
+        window.fetch(`https://api.are.na/v2/channels/${state.params.slug}`)
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            console.log(result);
+            
+            state.title = result.title;
+            state.owner = result.owner;
+            state.contents = result.contents;
+            state.current = result.contents[0].id;
+            emitter.emit('render');
+        });
+    });
+
+    emitter.on('click', async data => {
+
+        let item = await state.contents.find(item => {
 
             return item.id == data;
         });
 
-        state.current = item.image.square.url;
+        state.current = item.id;
 
         emitter.emit('render');
     });
 });
 
 function mainView(state, emit) {
-    console.log(state.params);
+
     return html `
     <body>
         <div class="two-col">
             <div class="col">
                 <div class="header">
-                    <span>${state.title}</span>
-                    <span>${state.owner.full_name}</span>
+                    <span class="title">${state.title}</span>
+                    <span class="meta">${state.owner.full_name}</span>
                 </div>
                 <div class="list">
                     ${
@@ -72,7 +86,40 @@ function mainView(state, emit) {
             </div>
             <div class="col">
                 <div class="view">
-                    <img src="${state.current}}">
+                    ${
+                        state.contents.map(i => {
+                            if(i.id == state.current) {
+                                switch (i.class) {
+                                    case "Image":
+                                        return imageBlock(i);
+                                        break;
+                                    
+                                    case "Media":
+                                        return imageBlock(i);
+                                        break;
+
+                                    case "Link":
+                                        return imageBlock(i);
+                                        break;
+                                    
+                                    case "Attachment":
+                                        return imageBlock(i);
+                                        break;
+
+                                    case "Text":
+                                        return textBlock(i);
+                                        break;
+
+                                    case "Channel":
+                                        return channelBlock(i);
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                        })
+                    }
                 </div>
             </div>
         </div>
@@ -80,22 +127,11 @@ function mainView(state, emit) {
     `
 }
 
-function secondView(state) {
-
-    console.log(state.params);
-    
-    return html `
-    <body>
-        Second View!
-    </body>
-    `
-}
-
-function listItem(item, emit) {
-    return html `
-        <div onclick="${() => { emit('click', item.id)}}">
-            <span>${item.title}</span>
-            <span>${item.created_at}</span>
-        </div>
-    `
-}
+// function listItem(item, emit) {
+//     return html `
+//         <div class="list-item" onclick="${() => { emit('click', item.id)}}">
+//             <span class="item-title">${item.title ? item.title : "No title available"}</span>
+//             <span class="item-meta">${item.created_at}</span>
+//         </div>
+//     `
+// }

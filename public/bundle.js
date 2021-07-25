@@ -41,7 +41,7 @@ function newCall (Cls) {
   return new (Cls.bind.apply(Cls, arguments)) // eslint-disable-line
 }
 
-},{"assert":7,"nanolru":16}],2:[function(require,module,exports){
+},{"assert":7,"nanolru":17}],2:[function(require,module,exports){
 module.exports = require('nanohtml')
 
 },{"nanohtml":12}],3:[function(require,module,exports){
@@ -328,7 +328,7 @@ Choo.prototype._setCache = function (state) {
   }
 }
 
-},{"./component/cache":1,"assert":7,"document-ready":4,"nanobus":8,"nanohref":9,"nanomorph":17,"nanoquery":20,"nanoraf":21,"nanorouter":22,"nanotiming":24,"scroll-to-anchor":26}],4:[function(require,module,exports){
+},{"./component/cache":1,"assert":7,"document-ready":4,"nanobus":8,"nanohref":9,"nanomorph":18,"nanoquery":21,"nanoraf":22,"nanorouter":23,"nanotiming":25,"scroll-to-anchor":27}],4:[function(require,module,exports){
 'use strict'
 
 module.exports = ready
@@ -853,7 +853,7 @@ Nanobus.prototype._emit = function (arr, eventName, data, uuid) {
   }
 }
 
-},{"assert":7,"nanotiming":24,"remove-array-items":25}],9:[function(require,module,exports){
+},{"assert":7,"nanotiming":25,"remove-array-items":26}],9:[function(require,module,exports){
 var assert = require('assert')
 
 var safeExternalLink = /(noopener|noreferrer) (noopener|noreferrer)/
@@ -1170,7 +1170,22 @@ module.exports = function (document) {
   return exports
 }
 
-},{"./append-child":10,"./bool-props":11,"./direct-props":13,"./svg-tags":15,"hyperx":6}],15:[function(require,module,exports){
+},{"./append-child":10,"./bool-props":11,"./direct-props":13,"./svg-tags":16,"hyperx":6}],15:[function(require,module,exports){
+'use strict'
+
+function nanohtmlRawBrowser (tag) {
+  var el = document.createElement('div')
+  el.innerHTML = tag
+  return toArray(el.childNodes)
+}
+
+function toArray (arr) {
+  return Array.isArray(arr) ? arr : [].slice.call(arr)
+}
+
+module.exports = nanohtmlRawBrowser
+
+},{}],16:[function(require,module,exports){
 'use strict'
 
 module.exports = [
@@ -1190,7 +1205,7 @@ module.exports = [
   'tspan', 'use', 'view', 'vkern'
 ]
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = LRU
 
 function LRU (opts) {
@@ -1328,7 +1343,7 @@ LRU.prototype.evict = function () {
   this.remove(this.tail)
 }
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 var assert = require('nanoassert')
 var morph = require('./lib/morph')
 
@@ -1493,7 +1508,7 @@ function same (a, b) {
   return false
 }
 
-},{"./lib/morph":19,"nanoassert":7}],18:[function(require,module,exports){
+},{"./lib/morph":20,"nanoassert":7}],19:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -1540,7 +1555,7 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var events = require('./events')
 var eventsLength = events.length
 
@@ -1715,7 +1730,7 @@ function updateAttribute (newNode, oldNode, name) {
   }
 }
 
-},{"./events":18}],20:[function(require,module,exports){
+},{"./events":19}],21:[function(require,module,exports){
 var reg = /([^?=&]+)(=([^&]*))?/g
 var assert = require('assert')
 
@@ -1739,7 +1754,7 @@ function qs (url) {
   return obj
 }
 
-},{"assert":7}],21:[function(require,module,exports){
+},{"assert":7}],22:[function(require,module,exports){
 'use strict'
 
 var assert = require('assert')
@@ -1776,7 +1791,7 @@ function nanoraf (render, raf) {
   }
 }
 
-},{"assert":7}],22:[function(require,module,exports){
+},{"assert":7}],23:[function(require,module,exports){
 var assert = require('assert')
 var wayfarer = require('wayfarer')
 
@@ -1832,7 +1847,7 @@ function pathname (routename, isElectron) {
   return decodeURI(routename.replace(suffix, '').replace(normalize, '/'))
 }
 
-},{"assert":7,"wayfarer":27}],23:[function(require,module,exports){
+},{"assert":7,"wayfarer":28}],24:[function(require,module,exports){
 var assert = require('assert')
 
 var hasWindow = typeof window !== 'undefined'
@@ -1889,7 +1904,7 @@ NanoScheduler.prototype.setTimeout = function (cb) {
 
 module.exports = createScheduler
 
-},{"assert":7}],24:[function(require,module,exports){
+},{"assert":7}],25:[function(require,module,exports){
 var scheduler = require('nanoscheduler')()
 var assert = require('assert')
 
@@ -1939,7 +1954,7 @@ function noop (cb) {
   }
 }
 
-},{"assert":7,"nanoscheduler":23}],25:[function(require,module,exports){
+},{"assert":7,"nanoscheduler":24}],26:[function(require,module,exports){
 'use strict'
 
 /**
@@ -1968,7 +1983,7 @@ module.exports = function removeItems (arr, startIdx, removeCount) {
   arr.length = len
 }
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 module.exports = scrollToAnchor
 
 function scrollToAnchor (anchor, options) {
@@ -1980,7 +1995,7 @@ function scrollToAnchor (anchor, options) {
   }
 }
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var assert = require('assert')
 var trie = require('./trie')
@@ -2055,7 +2070,7 @@ function Wayfarer (dft) {
   }
 }
 
-},{"./trie":28,"assert":7}],28:[function(require,module,exports){
+},{"./trie":29,"assert":7}],29:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var assert = require('assert')
 
@@ -2196,18 +2211,63 @@ function has (object, property) {
   return Object.prototype.hasOwnProperty.call(object, property)
 }
 
-},{"assert":7}],29:[function(require,module,exports){
+},{"assert":7}],30:[function(require,module,exports){
+const choo = require('choo');
+const html = require('choo/html');
+const raw = require('nanohtml/raw');
+
+function listItem(item, emit) {
+    return html `
+        <div class="list-item" onclick="${() => { emit('click', item.id)}}">
+            <span class="item-title">${item.title ? item.title : "No title available"}</span>
+            <span class="item-meta">${item.created_at}</span>
+        </div>
+    `
+}
+
+function imageBlock(state) {
+    return html `
+        <img class="preview" src="${state.image.square.url}">
+    `
+}
+
+function channelBlock(state) {
+    return html `
+        <div class="channel">
+            <span class="channel-title">
+                ${state.title}
+            </span>
+        </div>
+    `
+}
+
+function textBlock(state) {
+    return html `
+        <div class="text">
+            ${raw(state.content_html)}
+        </div>
+    `
+}
+
+module.exports = {
+    listItem,
+    imageBlock,
+    channelBlock,
+    textBlock
+}
+},{"choo":3,"choo/html":2,"nanohtml/raw":15}],31:[function(require,module,exports){
 const choo = require('choo');
 const html = require('choo/html');
 
+let { listItem, imageBlock, channelBlock, textBlock } = require('./components/items.js');
+
 let app = choo({hash: true});
-app.route('/', mainView);
-app.route('#hello', secondView);
-app.route('#hello/:name', secondView);
+app.route('/:slug', mainView);
 
 
 
 app.mount('body');
+ 
 app.use((state, emitter) => {
 
     state.title = null;
@@ -2217,11 +2277,8 @@ app.use((state, emitter) => {
 
     emitter.on('navigate', () => {
         console.log(`Navigated to state: ${state.route}`);
-    });
 
-    emitter.on('DOMContentLoaded', () => {
-
-        window.fetch('https://api.are.na/v2/channels/abstract-deities')
+        window.fetch(`https://api.are.na/v2/channels/${state.params.slug}`)
         .then(response => {
             return response.json();
         })
@@ -2230,36 +2287,52 @@ app.use((state, emitter) => {
             state.title = result.title;
             state.owner = result.owner;
             state.contents = result.contents;
-            state.current = result.contents[0].image.square.url;
+            state.current = result.contents[0].id; 
             console.log(state);
-
+    
             emitter.emit('render');
         });
     });
 
-    emitter.on('click', data => {
+    emitter.on('DOMContentLoaded', () => {
 
-        console.log('Item clicked', data);
-        let item = state.contents.find(item => {
+        window.fetch(`https://api.are.na/v2/channels/${state.params.slug}`)
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            console.log(result);
+            
+            state.title = result.title;
+            state.owner = result.owner;
+            state.contents = result.contents;
+            state.current = result.contents[0].id;
+            emitter.emit('render');
+        });
+    });
+
+    emitter.on('click', async data => {
+
+        let item = await state.contents.find(item => {
 
             return item.id == data;
         });
 
-        state.current = item.image.square.url;
+        state.current = item.id;
 
         emitter.emit('render');
     });
 });
 
 function mainView(state, emit) {
-    console.log(state.params);
+
     return html `
     <body>
         <div class="two-col">
             <div class="col">
                 <div class="header">
-                    <span>${state.title}</span>
-                    <span>${state.owner.full_name}</span>
+                    <span class="title">${state.title}</span>
+                    <span class="meta">${state.owner.full_name}</span>
                 </div>
                 <div class="list">
                     ${
@@ -2271,7 +2344,40 @@ function mainView(state, emit) {
             </div>
             <div class="col">
                 <div class="view">
-                    <img src="${state.current}}">
+                    ${
+                        state.contents.map(i => {
+                            if(i.id == state.current) {
+                                switch (i.class) {
+                                    case "Image":
+                                        return imageBlock(i);
+                                        break;
+                                    
+                                    case "Media":
+                                        return imageBlock(i);
+                                        break;
+
+                                    case "Link":
+                                        return imageBlock(i);
+                                        break;
+                                    
+                                    case "Attachment":
+                                        return imageBlock(i);
+                                        break;
+
+                                    case "Text":
+                                        return textBlock(i);
+                                        break;
+
+                                    case "Channel":
+                                        return channelBlock(i);
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                        })
+                    }
                 </div>
             </div>
         </div>
@@ -2279,23 +2385,12 @@ function mainView(state, emit) {
     `
 }
 
-function secondView(state) {
-
-    console.log(state.params);
-    
-    return html `
-    <body>
-        Second View!
-    </body>
-    `
-}
-
-function listItem(item, emit) {
-    return html `
-        <div onclick="${() => { emit('click', item.id)}}">
-            <span>${item.title}</span>
-            <span>${item.created_at}</span>
-        </div>
-    `
-}
-},{"choo":3,"choo/html":2}]},{},[29]);
+// function listItem(item, emit) {
+//     return html `
+//         <div class="list-item" onclick="${() => { emit('click', item.id)}}">
+//             <span class="item-title">${item.title ? item.title : "No title available"}</span>
+//             <span class="item-meta">${item.created_at}</span>
+//         </div>
+//     `
+// }
+},{"./components/items.js":30,"choo":3,"choo/html":2}]},{},[31]);

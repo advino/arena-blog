@@ -21,7 +21,9 @@ function channelBlock(state) {
     return html `
         <div class="channel">
             <span class="channel-title">
-                ${state.title}
+                <a href="https://are.na/${state.owner_slug}/${state.slug}">
+                    ${state.title}
+                </a>
             </span>
         </div>
     `

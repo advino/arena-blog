@@ -2219,7 +2219,7 @@ const raw = require('nanohtml/raw');
 function listItem(item, emit) {
     return html `
         <div class="list-item" onclick="${() => { emit('click', item.id)}}">
-            <span class="item-title">${item.title ? item.title : "No title available"}</span>
+            <span class="item-title">${item.title ? item.title : "Untitled"}</span>
             <span class="item-meta">${item.created_at}</span>
         </div>
     `
@@ -2235,7 +2235,9 @@ function channelBlock(state) {
     return html `
         <div class="channel">
             <span class="channel-title">
-                ${state.title}
+                <a href="https://are.na/${state.owner_slug}/${state.slug}">
+                    ${state.title}
+                </a>
             </span>
         </div>
     `
@@ -2384,13 +2386,4 @@ function mainView(state, emit) {
     </body>
     `
 }
-
-// function listItem(item, emit) {
-//     return html `
-//         <div class="list-item" onclick="${() => { emit('click', item.id)}}">
-//             <span class="item-title">${item.title ? item.title : "No title available"}</span>
-//             <span class="item-meta">${item.created_at}</span>
-//         </div>
-//     `
-// }
 },{"./components/items.js":30,"choo":3,"choo/html":2}]},{},[31]);

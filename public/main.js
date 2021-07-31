@@ -126,12 +126,3 @@ function mainView(state, emit) {
     </body>
     `
 }
-
-// function listItem(item, emit) {
-//     return html `
-//         <div class="list-item" onclick="${() => { emit('click', item.id)}}">
-//             <span class="item-title">${item.title ? item.title : "No title available"}</span>
-//             <span class="item-meta">${item.created_at}</span>
-//         </div>
-//     `
-// }

@@ -13,11 +13,11 @@ Are.na Blog is now powered by Choo, which is an experimental front-end framework
 Here's a quick example of how to get your channel to render as a blog:
 
 ``` js
-    CHANNEL URL: https://www.are.na/nicolas-boillot/patterns-dithering
+    CHANNEL URL = 'https://www.are.na/nicolas-boillot/patterns-dithering'
 
-    SLUG: patterns-dithering
+    SLUG = 'patterns-dithering'
 
-    ARE.NA BLOG URL: https://unruffled-euler-9e0ed7.netlify.app/patterns-dithering
+    ARE.NA_BLOG_URL = 'https://unruffled-euler-9e0ed7.netlify.app/patterns-dithering'
 
 ```
 

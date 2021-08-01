@@ -13,7 +13,7 @@ function listItem(item, emit) {
 
 function imageBlock(state) {
     return html `
-        <img class="preview" src="${state.image.square.url}">
+        <img class="preview" src="${state.image.large.url}">
     `
 }
 

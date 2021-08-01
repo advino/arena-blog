@@ -1,57 +1,32 @@
-# arena-blog
+# Are.na Blog
 
-arena-blog is a lightweight template kit for quickly building blogs using Are.na as a CMS. 
+Are.na Blog is a website that renders any channel in a blog format. It supports all block types but is ideal for text based channels in general.
 
-## Setup
-To set up arena-blog you'll need to first clone the repository. The code-base consists of the following:
-```
-- index.html
-- public
-    - index.js
-    - styles.css
-```
+## Updates
 
-The html file contains the template for the blog, while the js file does all the work requesting the content from Are.na via their API. The stylesheet can be customized to render the blog however you choose. I've set a default style to help get you started. Eventually I'll include a branch containing all unstyled elements for those who want to go wild with it :)
+I had wrote Are.na Blog as a tool that required you to clone your own version and fill in the required sections with your channel's slug name. Because I am lazy I decided to make a site that takes a slug as a URL param and renders the site with the blocks from that slug's channel.
 
-### Setting an arena channel
-To set an aren.a channel to create a blog from go into the index.js file an edit line 2 in the `generateBlog()` function.
-```
-function generateBlog() {
-    fetch('https://api.are.na/v2/channels/==arena-blog==').then(response => {
-        return response.json();
-    }).then(res => { ...
+Are.na Blog is now powered by Choo, which is an experimental front-end framework. It's really small, very simple, and a good place to start for learning to write apps with state, store, and routing. That being said it is quite experimental and I don't know how well maintained it is. For all you know, tomorrow it could be completely borked and this blog unusable. It was a fun experience to write this app with so take that as you will. 
+
+## How to render your channel 
+
+Here's a quick example of how to get your channel to render as a blog:
+
+``` js
+    CHANNEL URL: https://www.are.na/nicolas-boillot/patterns-dithering
+
+    SLUG: patterns-dithering
+
+    ARE.NA BLOG URL: https://unruffled-euler-9e0ed7.netlify.app/patterns-dithering
 
 ```
 
-Replace the highlighted section with the slug of the channel you wish to add. The slug is the name Are.na assigns a channel when it is made. In the url it appears here:
-```
-https://www.are.na/user-name/slug
-```
+There you have it! Excluding the fact that the url is fucking stupid this is should be a simple process. Maybe I will make a home page where you can paste a link and maybe I'll get a better domain. But maybe I won't... 
 
-Once you've replaced the slug, save the file and run the follow in your terminal to set up a local server for testing:
-```
-python -m SimpleHTTPServer
+Or maybe I'll just go back to making this a cli tool and allow you to build your own version of this app. We'll see 
 
-or
+For now, feel free to try it out, file bugs, or just make suggestions. 
 
-python3 -m http.server 
-```
+Cheers
 
-You'll need to update your channel name on the index.html file in the `<title>` and `<h2>` tags.
-
-## Deploying
-You can use Github Pages to host your blog once it is deployed to your own repo. 
-
-
-## Future Plans
-
-I made this as a quick exploration for blogging using Are.na. I'm a big fan of their text editor and think there's a lot of opportunity for thinking about how websites can help display that vast amount of information are.na channels contain. Here are some things I'm thinking about adding in.
-
-### CLI Tooling
-I'm thinking about building a cli flow for setting up blogs, so that the index.html and index.js files automatically update with the specific channel name. 
-
-### More layouts
-I've built a really basic format for a blog, but that doesn't mean there are more options. I'd love to explore more formats, some practical and some more experimental.
-
-### Sever-side version
-Once again, this was a very quick solution, although I do like the idea of keeping this as simple as possible. That being said there are definite advatanges to including a server-side (Express & Node.js) so that deploying can be easily done on a more dynamic service like Heroku or Firebase. 
+A

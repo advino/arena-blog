@@ -3,7 +3,7 @@ const html = require('choo/html');
 
 let { listItem, imageBlock, channelBlock, textBlock } = require('./components/items.js');
 
-let app = choo({hash: true});
+let app = choo();
 app.route('/:slug', mainView);
 
 

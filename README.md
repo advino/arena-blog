@@ -17,11 +17,11 @@ Here's a quick example of how to get your channel to render as a blog:
 
     SLUG = 'patterns-dithering'
 
-    ARE.NA_BLOG_URL = 'https://unruffled-euler-9e0ed7.netlify.app/patterns-dithering'
+    ARE.NA_BLOG_URL = 'https://arena.blog.netlify.app/patterns-dithering'
 
 ```
 
-There you have it! Excluding the fact that the url is fucking stupid this is should be a simple process. Maybe I will make a home page where you can paste a link and maybe I'll get a better domain. But maybe I won't... 
+There you have it! ~~Excluding the fact that the url is fucking stupid~~ this is should be a simple process. Maybe I will make a home page where you can paste a link and maybe I'll get a better domain. But maybe I won't... 
 
 Or maybe I'll just go back to making this a cli tool and allow you to build your own version of this app. We'll see 
 
